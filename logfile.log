@@ -1,0 +1,250 @@
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 469-849-560
+DEBUG:ddtrace.tracer:Waiting 5 seconds for tracer to finish. Hit ctrl-c to quit.
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5500
+ * Running on http://172.16.0.52:5500
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 469-849-560
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:12:43] "OPTIONS /api/postRequest HTTP/1.1" 200 -
+INFO:root:Calling Database
+DEBUG:ddtrace.internal.processor.trace:trace 13448226237788403785 has 2 spans, 1 finished
+DEBUG:ddtrace.tracer:finishing span name='__main__.database_query' id=1996824892328124448 trace_id=13448226237788403785 parent_id=3658896809889525919 service='database' resource='query' type=None start=1670371963.885472 end=1670371964.8886142 duration=1.003142 error=0 tags={'data': 'asdasd', 'information': 'This is a custom value from a post request'} metrics={'_dd.top_level': 1} (enabled:True)
+INFO:root:postRequest was called!
+DEBUG:ddtrace.tracer:finishing span name='__main__.post_request' id=3658896809889525919 trace_id=13448226237788403785 parent_id=None service='postRequest' resource='postRequest' type=None start=1670371963.884941 end=1670371964.890288 duration=1.005347 error=0 tags={'_dd.p.dm': '-0', 'runtime-id': 'c07fc5487fe840c394fc5f9fd756b690'} metrics={'_dd.agent_psr': 1.0, '_dd.top_level': 1, '_dd.tracer_kr': 1.0, '_sampling_priority_v1': 1, 'system.pid': 212} (enabled:True)
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:12:44] "POST /api/postRequest HTTP/1.1" 200 -
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+ERROR:ddtrace.internal.writer:failed to send traces to Datadog Agent at http://172.17.0.1:8126/v0.4/traces
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 409, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 447, in _send_payload
+    response = self._put(payload, headers)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 399, in _put
+    self._conn.request("PUT", self._endpoint, data, headers)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 564, in flush_queue
+    self._retry_upload(self._send_payload, encoded, n_traces)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 406, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 363, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x104a6e430 state=finished raised timeout>]
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:23] "OPTIONS /api/getRequest HTTP/1.1" 200 -
+INFO:root:Calling Database
+DEBUG:ddtrace.internal.processor.trace:trace 5819519124852803313 has 2 spans, 1 finished
+DEBUG:ddtrace.tracer:finishing span name='__main__.database_query' id=9884637103302608612 trace_id=5819519124852803313 parent_id=4167109272370213929 service='database' resource='query' type=None start=1670372003.439405 end=1670372004.444558 duration=1.005153 error=0 tags={'data': 'asdasd', 'information': 'This is a custom value from a get request'} metrics={'_dd.top_level': 1} (enabled:True)
+INFO:root:getRequest was called!
+DEBUG:ddtrace.tracer:finishing span name='__main__.get_request' id=4167109272370213929 trace_id=5819519124852803313 parent_id=None service='getRequest' resource='getRequest' type=None start=1670372003.4389372 end=1670372004.4462132 duration=1.007276 error=0 tags={'_dd.p.dm': '-0', 'data': 'asdasd', 'information': 'This is a custom value from a post request', 'runtime-id': 'c07fc5487fe840c394fc5f9fd756b690'} metrics={'_dd.agent_psr': 1.0, '_dd.top_level': 1, '_dd.tracer_kr': 1.0, '_sampling_priority_v1': 1, 'system.pid': 212} (enabled:True)
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:24] "GET /api/getRequest HTTP/1.1" 200 -
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+INFO:root:Calling Database
+DEBUG:ddtrace.internal.processor.trace:trace 5805594382506335574 has 2 spans, 1 finished
+DEBUG:ddtrace.tracer:finishing span name='__main__.database_query' id=12588398793948313793 trace_id=5805594382506335574 parent_id=11304051155795146962 service='database' resource='query' type=None start=1670372005.410368 end=1670372006.413354 duration=1.002986 error=0 tags={'data': 'this is a get request', 'information': 'This is a custom value from a get request'} metrics={'_dd.top_level': 1} (enabled:True)
+INFO:root:getRequest was called!
+DEBUG:ddtrace.tracer:finishing span name='__main__.get_request' id=11304051155795146962 trace_id=5805594382506335574 parent_id=None service='getRequest' resource='getRequest' type=None start=1670372005.410031 end=1670372006.416826 duration=1.006795 error=0 tags={'_dd.p.dm': '-0', 'data': 'this is a get request', 'information': 'This is a custom value from a get request', 'runtime-id': 'c07fc5487fe840c394fc5f9fd756b690'} metrics={'_dd.agent_psr': 1.0, '_dd.top_level': 1, '_dd.tracer_kr': 1.0, '_sampling_priority_v1': 1, 'system.pid': 212} (enabled:True)
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:26] "GET /api/getRequest HTTP/1.1" 200 -
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:27] "OPTIONS /api/getErrorRequest HTTP/1.1" 200 -
+ERROR:root:Error was triggered...
+INFO:root:This looks peculiar...
+DEBUG:ddtrace.internal.processor.trace:trace 4094810092979052466 has 2 spans, 1 finished
+DEBUG:ddtrace.tracer:finishing span name='__main__.error_trigger' id=6172336920168354376 trace_id=4094810092979052466 parent_id=4153788493840776420 service='perculiar_function' resource='SOS' type=None start=1670372007.439729 end=1670372008.4565039 duration=1.016775 error=1 tags={'data': 'some kind of error here...', 'error.msg': 'error!', 'error.stack': 'Traceback (most recent call last):\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/tracer.py", line 956, in func_wrapper\n    return f(*args, **kwargs)\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/application.py", line 61, in error_trigger\n    raise ValueError("error!")\nValueError: error!\n', 'error.type': 'builtins.ValueError', 'information': 'ERROR ERROR!!'} metrics={'_dd.top_level': 1} (enabled:True)
+DEBUG:ddtrace.tracer:finishing span name='__main__.error_request' id=4153788493840776420 trace_id=4094810092979052466 parent_id=None service='errorRequest' resource='errorRequest' type=None start=1670372007.439035 end=1670372008.45796 duration=1.018925 error=1 tags={'_dd.p.dm': '-0', 'data': 'this is a get request', 'error.msg': 'error!', 'error.stack': 'Traceback (most recent call last):\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/tracer.py", line 956, in func_wrapper\n    return f(*args, **kwargs)\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/application.py", line 43, in error_request\n    error_trigger()\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/tracer.py", line 956, in func_wrapper\n    return f(*args, **kwargs)\n  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/application.py", line 61, in error_trigger\n    raise ValueError("error!")\nValueError: error!\n', 'error.type': 'builtins.ValueError', 'information': 'This is a custom value from a get request', 'runtime-id': 'c07fc5487fe840c394fc5f9fd756b690'} metrics={'_dd.agent_psr': 1.0, '_dd.top_level': 1, '_dd.tracer_kr': 1.0, '_sampling_priority_v1': 1, 'system.pid': 212} (enabled:True)
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:28] "[35m[1mGET /api/getErrorRequest HTTP/1.1[0m" 500 -
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+ERROR:ddtrace.internal.writer:failed to send traces to Datadog Agent at http://172.17.0.1:8126/v0.4/traces
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 409, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 447, in _send_payload
+    response = self._put(payload, headers)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 399, in _put
+    self._conn.request("PUT", self._endpoint, data, headers)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 564, in flush_queue
+    self._retry_upload(self._send_payload, encoded, n_traces)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 406, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 363, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x104a95340 state=finished raised timeout>]
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+ERROR:ddtrace.internal.writer:failed to send traces to Datadog Agent at http://172.17.0.1:8126/v0.4/traces
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 409, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 447, in _send_payload
+    response = self._put(payload, headers)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 399, in _put
+    self._conn.request("PUT", self._endpoint, data, headers)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 564, in flush_queue
+    self._retry_upload(self._send_payload, encoded, n_traces)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 406, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 363, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x104f24eb0 state=finished raised timeout>]
+DEBUG:ddtrace.internal.writer:dropped.traces metric is greater than accepted.traces metricThis difference may be reconciled in future metric uploads (dropped.traces: 2, accepted.traces: 0)
+DEBUG:ddtrace.internal.telemetry.writer:failed to send telemetry to the Datadog Agent at http://localhost:8126/telemetry/proxy/api/v2/apmtelemetry.
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/telemetry/writer.py", line 131, in periodic
+    resp = self._send_request(telemetry_request)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/telemetry/writer.py", line 81, in _send_request
+    conn.request("POST", self.ENDPOINT, rb_json, self._create_headers(request["request_type"]))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:46] "OPTIONS /api/getRequest HTTP/1.1" 200 -
+INFO:root:Calling Database
+DEBUG:ddtrace.internal.processor.trace:trace 12479091259478407699 has 2 spans, 1 finished
+DEBUG:ddtrace.tracer:finishing span name='__main__.database_query' id=11899512713686464609 trace_id=12479091259478407699 parent_id=12944683412041568178 service='database' resource='query' type=None start=1670372026.9758668 end=1670372027.9774818 duration=1.001615 error=0 tags={'data': 'error', 'information': 'This is a custom value from a get request'} metrics={'_dd.top_level': 1} (enabled:True)
+INFO:root:getRequest was called!
+DEBUG:ddtrace.tracer:finishing span name='__main__.get_request' id=12944683412041568178 trace_id=12479091259478407699 parent_id=None service='getRequest' resource='getRequest' type=None start=1670372026.975719 end=1670372027.978506 duration=1.002787 error=0 tags={'_dd.p.dm': '-0', 'data': 'error', 'information': 'ERROR ERROR!!', 'runtime-id': 'c07fc5487fe840c394fc5f9fd756b690'} metrics={'_dd.agent_psr': 1.0, '_dd.top_level': 1, '_dd.tracer_kr': 0.0, '_sampling_priority_v1': 1, 'system.pid': 212} (enabled:True)
+INFO:werkzeug:127.0.0.1 - - [06/Dec/2022 19:13:47] "GET /api/getRequest HTTP/1.1" 200 -
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+DEBUG:ddtrace.internal.writer:creating new agent connection to http://172.17.0.1:8126 with timeout 2
+ERROR:ddtrace.internal.writer:failed to send traces to Datadog Agent at http://172.17.0.1:8126/v0.4/traces
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 409, in __call__
+    result = fn(*args, **kwargs)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 447, in _send_payload
+    response = self._put(payload, headers)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 399, in _put
+    self._conn.request("PUT", self._endpoint, data, headers)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/writer.py", line 564, in flush_queue
+    self._retry_upload(self._send_payload, encoded, n_traces)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 406, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/tenacity/__init__.py", line 363, in iter
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x104a6ed60 state=finished raised timeout>]
+DEBUG:ddtrace.internal.telemetry.writer:failed to send telemetry to the Datadog Agent at http://localhost:8126/telemetry/proxy/api/v2/apmtelemetry.
+Traceback (most recent call last):
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/telemetry/writer.py", line 131, in periodic
+    resp = self._send_request(telemetry_request)
+  File "/Users/thomas.park/Documents/fargate_datadog_playground/Flask_backend/env/lib/python3.8/site-packages/ddtrace/internal/telemetry/writer.py", line 81, in _send_request
+    conn.request("POST", self.ENDPOINT, rb_json, self._create_headers(request["request_type"]))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1252, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1298, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1247, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 1007, in _send_output
+    self.send(msg)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 947, in send
+    self.connect()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/http/client.py", line 918, in connect
+    self.sock = self._create_connection(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 808, in create_connection
+    raise err
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.8/lib/python3.8/socket.py", line 796, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+DEBUG:ddtrace.tracer:Waiting 5 seconds for tracer to finish. Hit ctrl-c to quit.
+DEBUG:ddtrace.tracer:Waiting 5 seconds for tracer to finish. Hit ctrl-c to quit.
